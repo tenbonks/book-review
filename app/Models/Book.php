@@ -83,19 +83,19 @@ class Book extends Model
 
     public function scopePopularLastMonth(Builder $query) : Builder {
         return $query->popular(now()->subMonth(), now())
-            ->highestRated(now()->subMonth(), now())
+            ->highestRated($query, now()->subMonth(), now())
             ->minReviews(2);
     }
 
     public function scopePopularLast6Months(Builder $query) : Builder {
         return $query->popular(now()->subMonths(6), now())
-            ->highestRated(now()->subMonths(6), now())
+            ->highestRated($query, now()->subMonths(6), now())
             ->minReviews(5);
     }
 
     public function scopeHighestRatedLastMonth(Builder $query) : Builder {
         return $query->highestRated(now()->subMonth(), now())
-            ->popular(now()->subMonth(), now())
+            ->popular($query, now()->subMonth(), now())
             ->minReviews(2);
     }
 
@@ -115,6 +115,7 @@ class Book extends Model
      */
     private function dateRangeFilter(Builder $query, $from = null, $to = null): void
     {
+
         if ($from && !$to) {
             // Return models that have a created_at equal or greater than $from
 
