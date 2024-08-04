@@ -16,6 +16,8 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
 
+        User::factory(5)->create();
+
         // Create 33 books that have between 5 and 30 good reviews
 
         Book::factory(33)->create()->each(function ($book) {
