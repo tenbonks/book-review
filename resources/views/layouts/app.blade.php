@@ -122,6 +122,8 @@
         }
 
     </style>
+
+    @yield('style')
     {{-- blade-formatter-enable --}}
 </head>
 

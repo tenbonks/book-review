@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Enums\Routes;
+use App\Enums\RouteNames;
 use App\Http\Requests\ReviewRequest;
 use App\Models\Book;
 use Illuminate\Http\Request;
@@ -32,7 +32,7 @@ class ReviewController extends Controller
     {
         $book->reviews()->create($request->validated());
 
-        return redirect()->route(Routes::booksShow()->value, $book);
+        return redirect()->route(RouteNames::booksShow()->value, $book);
     }
 
     /**
