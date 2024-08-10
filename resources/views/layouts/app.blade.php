@@ -70,6 +70,57 @@
         }
 
 
+        /* Form Inputs */
+        input:focus, textarea:focus {
+            outline: none;
+        }
+
+        .input-group {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+
+        .input-group input, .input-group textarea {
+            padding: 8px;
+            border-radius: 8px;
+            /*border: none;*/
+        }
+
+        .input-group label {
+            color: #fff;
+            padding: 4px 8px 4px 0;
+        }
+
+
+        .label-error {
+            display: flex;
+            justify-content: space-between;
+            align-content: center;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        @media (min-width: 550px) {
+            .label-error {
+                flex-direction: row;
+            }
+
+        }
+
+        .label-error .error-message {
+            height: fit-content;
+            font-size: 12px;
+            color: #fff;
+            background: #c22;
+            padding: 4px 8px;
+            border-radius: 8px;
+            position: relative;
+            width: fit-content;
+        }
+
     </style>
     {{-- blade-formatter-enable --}}
 </head>

@@ -35,19 +35,20 @@ class BookController extends Controller
             default => $books->latest()->withAvgRating()->withReviewsCount()
         };
 
+        // -- CACHING BOOK EXAMPLE BELOW
         // Use the books stored in cache, otherwise set them
-        $cacheKey = 'books:' . $filter . ':' . $title;
-        $books =
+        // $cacheKey = 'books:' . $filter . ':' . $title;
+        // $book = cache()->remember(
+        //  $cacheKey,
+        //  3600,
+        //  fn() =>
+        //      Book::with([
+        //          'reviews' => fn($query) => $query->latest()
+        //      ])->withAvgRating()->withReviewsCount()->findOrFail($id)
+        // );
 
-//            Cache::remember(
-//            $cacheKey,
-//            3600,
-//            function () use ($books) {
-                $books->paginate(10);
-//        });
+        $books = $books->paginate(20);
 
-        // Instead of using ['books' => $books], you can use compact('books') which acts as a shorthand.
-        // but it is personal preference as it can be easier to read with the more verbose method
         return view('books.index', ['books' => $books]);
     }
 
