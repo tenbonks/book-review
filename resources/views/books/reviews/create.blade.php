@@ -7,20 +7,18 @@
     <form method="POST" action="{{ route(Routes::booksReviewsStore()->value, $book) }}">
         @csrf
 
-        <div class="input-group">
-            <x-forms.label-error for="review"></x-forms.label-error>
-            <textarea name="review" rows="3" id="review" required class="input mb-4"></textarea>
-        </div>
+        <x-forms.input-group for="review">
+            <textarea name="review" rows="3" id="review" class="input mb-4">{{ old('review', '') }}</textarea>
+        </x-forms.input-group>
 
-        <div class="input-group">
-            <x-forms.label-error for="rating"></x-forms.label-error>
+        <x-forms.input-group for="rating">
             <select name="rating" id="rating" class="input mb-4">
                 <option value="">Select a rating</option>
                 @for($i = 1; $i <= 5; $i++)
                     <option value="{{ $i }}">{{ $i }}</option>
                 @endfor
             </select>
-        </div>
+        </x-forms.input-group>
 
         <button type="submit" class="btn">Add review</button>
 

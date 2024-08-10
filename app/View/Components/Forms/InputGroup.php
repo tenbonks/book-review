@@ -6,13 +6,14 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class LabelError extends Component
+class InputGroup extends Component
 {
     /**
      * Create a new component instance.
      */
     public function __construct(public readonly string $for)
     {
+        //
     }
 
     /**
@@ -20,6 +21,6 @@ class LabelError extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.forms.label-error');
+        return view('components.forms.input-group');
     }
 }
