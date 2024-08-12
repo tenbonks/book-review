@@ -32,7 +32,7 @@ class ReviewController extends Controller
     {
         $book->reviews()->create($request->validated());
 
-        return redirect()->route(RouteNames::booksShow()->value, $book);
+        return redirect()->route(RouteNames::booksShow()->value, $book)->with('success', 'Review Added successfully!');
     }
 
     /**

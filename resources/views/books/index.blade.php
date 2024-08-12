@@ -1,4 +1,4 @@
-@php use App\Enums\BookFilters;use App\Enums\Routes; @endphp
+@php use App\Enums\BookFilters;use App\Enums\RouteNames; @endphp
 @extends('layouts.app')
 
 @section('content')
@@ -28,7 +28,7 @@
                 <div class="book-item">
                     <div class="flex flex-wrap items-center justify-between">
                         <div class="w-full flex-grow sm:w-auto mb-4 sm:mb-0">
-                            <a href="{{ route(Routes::booksShow()->value, $book) }}" class="book-title">
+                            <a href="{{ route(RouteNames::booksShow()->value, $book) }}" class="book-title">
                                 {{ $book->title }}
                             </a>
                             <span class="book-author">by {{ $book->author }}</span>

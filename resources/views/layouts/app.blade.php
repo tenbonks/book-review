@@ -68,8 +68,9 @@
         .reset-link {
             @apply text-gray-400 underline;
         }
+    </style>
 
-
+    <style>
         /* Form Inputs */
         input:focus, textarea:focus {
             outline: none;
@@ -120,7 +121,6 @@
             position: relative;
             width: fit-content;
         }
-
     </style>
 
     @yield('style')

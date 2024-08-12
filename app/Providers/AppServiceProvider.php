@@ -23,6 +23,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
 
+        // Limit the rate a user/ip address can create a review - this is applied in web.php on the store action
         RateLimiter::for('reviews', function (Request $request) {
             return Limit::perHour(20)->by(optional($request->user())->id ?: $request->ip());
         });

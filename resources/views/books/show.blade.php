@@ -1,3 +1,4 @@
+@php use App\Enums\RouteNames; @endphp
 @extends('layouts.app')
 
 @section('content')
@@ -8,7 +9,7 @@
             <div class="book-author text-lg font-semibold mb-2">by {{ $book->author }}</div>
             <div class="book-rating flex items-center mb-4">
                 <div class="mr-2 text-sm font-medium text-white">
-                    <x-star-rating :rating="$book->reviews_avg_rating" />
+                    <x-star-rating :rating="$book->reviews_avg_rating"/>
                 </div>
                 <span class="book-review-count text-sm text-gray-400">
                     {{ $book->reviews_count }} {{ Str::plural('review', $book->reviews_count) }}
@@ -18,7 +19,8 @@
     </div>
 
     <div class="mb-4">
-        <a href="{{ route('books.reviews.create', $book) }}" class="btn">Add a review</a>
+        <a href="{{ url()->previous() }}" class="btn">Back</a>
+        <a href="{{ route(RouteNames::booksReviewsCreate()->value, $book) }}" class="btn">Add a review</a>
     </div>
 
     <div>
