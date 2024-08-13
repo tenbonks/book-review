@@ -4,7 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Book Reviews</title>
+
+    {{-- External scripts --}}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
     {{-- blade-formatter-disable --}}
     <style type="text/tailwindcss">
@@ -128,6 +132,20 @@
 </head>
 
 <body class="container mx-auto mt-10 mb-10 max-w-3xl">
+
+@if(session()->has('success'))
+    <div x-data="{ flash : true }"
+         x-show="flash"
+         class="relative mb-4 rounded border border-green-400 bg-green-100 px-4 py-3 text-md text-green-700"
+         role="alert">
+        <strong class="font-bold">Success!</strong>
+        <p>{{ session('success') }}</p>
+        <span class="absolute top-0 right-0 bottom-0 px-4 py-3">
+            <i @click="flash = false" class="bi bi-x-lg hover:cursor-pointer"></i>
+        </span>
+    </div>
+@endif
+
 @yield('content')
 </body>
 
