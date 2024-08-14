@@ -19,7 +19,7 @@
     </div>
 
     <div class="mb-4">
-        <a href="{{ url()->previous() }}" class="btn">Back</a>
+        <a href="{{ route(RouteNames::books()->value) }}" class="btn">Latest Books</a>
         <a href="{{ route(RouteNames::booksReviewsCreate()->value, $book) }}" class="btn">Add a review</a>
     </div>
 
